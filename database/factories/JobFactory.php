@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,12 @@ class JobFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->jobTitle,
+            'description' => $this->faker->paragraphs(3, true), // $this->faker->realText(
+            'salary' => $this->faker->numberBetween(10000, 50000),
+            'location' => $this->faker->city,
+            'category' => $this->faker->randomElement(Job::$category),
+            'experience' => $this->faker->randomElement(Job::$experience),
         ];
     }
 }
