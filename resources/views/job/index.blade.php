@@ -1,12 +1,11 @@
 <x-layout>
   @foreach ($jobs as $job)
   {{-- insert data into slot of card.blade --}}
-    <x-card class='mb-4'>
-      {{$job->title}}
-      {{$job->description}}
-      {{$job->location}}
-      {{$job->created_at}}
-    </x-card>
+    <x-job-card :$job>
+      <x-link-button :href="route('jobs.show', $job)">
+        Show
+      </x-link-button>
+    </x-job-card>
 
   @endforeach
 </x-layout>
